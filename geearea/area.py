@@ -1205,14 +1205,14 @@ Try selecting a smaller area.'.format(pm_best*100))
             print(f'https://console.cloud.google.com/storage/browser/{cloud_bucket}')
             batchExport([image], scale=scale, cloud_bucket=cloud_bucket,
                         directory=directory, tryReduce=tryReduce,
-                        coords=self.get_coords())
+                        coords=self.get_coords(), to_disk=to_disk)
 
         elif isinstance(image, list):
             print('When the images are finished uploading, they will be avaiable at:')
             print(f'https://console.cloud.google.com/storage/browser/{cloud_bucket}')
             batchExport(image, scale=scale, cloud_bucket=cloud_bucket,
                             directory=directory, tryReduce=tryReduce,
-                            coords=self.get_coords())
+                            coords=self.get_coords(), to_disk=to_disk)
 
         elif isinstance(image, ee.ImageCollection):
             print('When the images are finished uploading, they will be avaiable at:')
@@ -1220,7 +1220,7 @@ Try selecting a smaller area.'.format(pm_best*100))
             aslist = eeICtolist(image)
             batchExport(aslist, scale=scale, cloud_bucket=cloud_bucket,
                             directory=directory, tryReduce=tryReduce,
-                            coords=self.get_coords())
+                            coords=self.get_coords(), to_disk=to_disk)
 
     def hist(self, image, band=0):
         """
